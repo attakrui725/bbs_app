@@ -20,3 +20,5 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('bbs', 'PostsController@index');
+
+Route::resource('bbs', 'PostController', ['only' => ['index' ,'shoe']]);

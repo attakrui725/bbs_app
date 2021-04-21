@@ -12,4 +12,13 @@ class PostsController extends Controller
       $posts = Post::orderby('created_at', 'desc')->get();
       return view('bbs.index', ['posts' => $posts]);
     }
+
+    public function show(Request $request, $id)
+    {
+      $post = Post::findOrFail($id);
+
+      return view('bbs.show', [
+        'post' => $post,
+        ]);
+    }
 }
