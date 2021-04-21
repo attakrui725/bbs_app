@@ -1,4 +1,4 @@
-@extends('layouts.bbslayout')
+@extends('layout.bbslayout')
 
 @section('title', 'LaravelPjt BBS 投稿編集ページ')
 @section('keywords', 'キーワード1,キーワード2,キーワード3')
@@ -7,7 +7,7 @@
 <link href="/css/bbs/style.css" rel="stylesheet">
 @endsection
 
-@include('layouts.bbsheader')
+@include('layout.bbsheader')
 
 @section('content')
 <div class="container mt-4">
@@ -109,4 +109,4 @@
 </div>
 @endsection
 
-@include('layouts.bbsfooter')
+@include('layout.bbsfooter')
