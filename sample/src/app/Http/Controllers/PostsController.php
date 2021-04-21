@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Post;
+use App\Http\Requests\PostRequest;
 
 class PostsController extends Controller
 {
@@ -21,4 +22,26 @@ class PostsController extends Controller
         'post' => $post,
         ]);
     }
+
+    public function create()
+    {
+      return view('bbs.create');
+    }
+
+    public function store(PostRequest $request)
+    {
+      $savedata = [
+          'name' => $request->name,
+          'subject' => $request->subject,
+          'message' => $request->message,
+          'category_id' => $request->category_id,
+      ];
+
+      $post = new Post;
+      $post->fill($savedata)->save();
+
+      return redirect('/bbs')->with('poststatus', '新規投稿しました');
+    }
+
+
 }
