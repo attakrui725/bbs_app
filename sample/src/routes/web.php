@@ -21,4 +21,4 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('bbs', 'PostsController@index');
 
-Route::resource('bbs', 'PostsController', ['only' => ['index', 'show']]);
+Route::resource('bbs', 'PostsController', ['only' => ['index', 'show', 'create', 'store']]);
