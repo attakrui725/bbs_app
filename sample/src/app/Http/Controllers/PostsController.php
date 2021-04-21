@@ -45,13 +45,13 @@ class PostsController extends Controller
 
     public function edit($post_id)
     {
-        $post = Post::findFail($post_id);
+        $post = Post::findOrFail($post_id);
         return view('bbs.edit', ['post' => $post]);
     }
 
     public function update(PostRequest $request)
     {
-      $davedata = [
+      $savedata = [
         'name' => $request->name,
         'subject' => $request->subject,
         'message' => $request->message,
