@@ -1,14 +1,14 @@
 <?php
-/** @var \Illuminate\Database\Eloquent\Factory $factory */
+namespace App;
+use Illuminate\Database\Eloquent\Model;
 
-use App\Comment;
-use Faker\Generator as Faker;
-
-$factory->define(Comment::class, function (Faker $faker) {
-  return [
-        'created_at' => $faker->date('Y-m-d H:i:s', 'now'),
-        'updated_at' => $faker->date('Y-m-d H:i:s', 'now'),
-        'name' => $faker->name,
-        'comment' => $faker->realText(200),
-    ];
-});
+class Comment extends Model
+{
+    /**
+     *
+     */
+    public function post()
+    {
+        return $this->belongsTo('App\Post');
+    }
+}

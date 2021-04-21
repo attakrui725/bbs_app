@@ -1,4 +1,4 @@
-@extends('layout.bbslayout')
+@extends('layouts.bbslayout')
 
 @section('title', 'LaravelPjt BBS 投稿の一覧ページ')
 @section('keywords', 'キーワード1,キーワード2,キーワード3')
@@ -24,10 +24,10 @@
         </tr>
         </thead>
         <tbody id="tbl">
-        @foreach ($posts as $post)
+ @foreach ($posts as $post)
             <tr>
                 <td>{{ $post->id }}</td>
-                <td>{{ $post->category->name }}</td>
+                <td>{{ optional($post->category)->name }}</td>
                 <td>{{ $post->created_at->format('Y.m.d') }}</td>
                 <td>{{ $post->name }}</td>
                 <td>{{ $post->subject }}</td>
@@ -48,4 +48,4 @@
 </div>
 @endsection
 
-@include('layout.bbsfooter')
+@include('layouts.bbsfooter')
