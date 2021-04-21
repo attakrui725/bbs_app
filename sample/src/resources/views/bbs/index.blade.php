@@ -7,7 +7,7 @@
 <link href="/css/bbs/style.css" rel="stylesheet">
 @endsection
 
-@include('layout.bbsheader')
+@include('layouts.bbsheader')
 
 @section('content')
 <div class="table-responsive">
