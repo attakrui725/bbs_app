@@ -11,6 +11,11 @@
 
 @section('content')
 <div class="container mt-4">
+<div class="mb-4 text-right">
+ <a href="{{ action('PostsController@edit', $post->id) }}" class="btn btn-info">
+ 編集する
+ </a>
+</div>
     <div class="border p-4">
         <!-- 件名 -->
         <h1 class="h4 mb-4">
