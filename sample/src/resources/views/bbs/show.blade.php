@@ -11,7 +11,7 @@
 
 @section('content')
 <div class="container mt-4">
-@if(Auth::check())
+@if (!Auth::guest() && Auth::user()->id == $post->user_id)
 <div class="mb-4 text-right">
  <a href="{{ action('PostsController@edit', $post->id) }}" class="btn btn-info">
  編集する
@@ -64,7 +64,6 @@
             @endforelse
         </section>
     </div>
-@if(Auth::check())
 <form class="mb-4" method="POST" action="{{ route('comment.store') }}">
     @csrf
 
@@ -108,7 +107,7 @@
         	<div class="invalid-feedback">
         		{{ $errors->first('comment') }}
         	</div>
-        @endif
+
     </div>
 
     <div class="mt-4">
