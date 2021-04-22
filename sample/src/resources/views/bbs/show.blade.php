@@ -11,6 +11,20 @@
 
 @section('content')
 <div class="container mt-4">
+<div class="mb-4 text-right">
+ <a href="{{ action('PostsController@edit', $post->id) }}" class="btn btn-info">
+ 編集する
+ </a>
+<form
+      style="display: inline-block;"
+      method="POST"
+        action="{{ action('PostsController@destroy', $post->id) }}"
+        >
+  @csrf
+  @method('DELETE')
+  <button class="btn btn-danger">削除する</button>
+</form>
+</div>
     <div class="border p-4">
         <!-- 件名 -->
         <h1 class="h4 mb-4">
