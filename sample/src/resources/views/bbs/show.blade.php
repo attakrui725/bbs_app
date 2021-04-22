@@ -26,7 +26,7 @@
   <button class="btn btn-danger">削除する</button>
 </form>
 </div>
-  @endif
+@endif
     <div class="border p-4">
         <!-- 件名 -->
         <h1 class="h4 mb-4">
@@ -64,7 +64,8 @@
             @endforelse
         </section>
     </div>
-<form class="mb-4" method="POST" action="{{ route('comment.store') }}">
+
+    <form class="mb-4" method="POST" action="{{ route('comment.store') }}">
     @csrf
 
     <input
@@ -107,21 +108,25 @@
         	<div class="invalid-feedback">
         		{{ $errors->first('comment') }}
         	</div>
-
+        @endif
     </div>
 
-    <div class="mt-4">
+<div class="mt-4">
 	    <button type="submit" class="btn btn-primary">
 		    コメントする
 	    </button>
     </div>
 </form>
-@endif
+
 @if (session('commentstatus'))
     <div class="alert alert-success mt-4 mb-4">
-    	{{ session('commentstatus') }}
+      {{ session('commentstatus') }}
     </div>
 @endif
+</form>
+
+
+
 <div class="mt-4 mb-4">
     <a href="{{ route('bbs.index') }}" class="btn btn-info">
         一覧に戻る
