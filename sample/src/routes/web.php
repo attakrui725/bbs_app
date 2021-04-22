@@ -21,6 +21,10 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('bbs', 'PostsController@index');
 
-Route::resource('bbs', 'PostsController', ['only' => ['index', 'show', 'create', 'store', 'edit', 'update', 'destroy']]);
+Route::resource('bbs', 'PostsController', ['only' => ['index', 'show', 'create', 'store', 'edit', 'update', 'destroy']]); ##
+// Route::group(['middleware' => 'auth'], function() {
+// Route::get
+
+// });
 
 Route::resource('comment', 'CommentsController',['only' => ['store']]);
