@@ -11,6 +11,7 @@
 
 @section('content')
 <div class="container mt-4">
+@if(Auth::check())
 <div class="mb-4 text-right">
  <a href="{{ action('PostsController@edit', $post->id) }}" class="btn btn-info">
  編集する
@@ -25,6 +26,7 @@
   <button class="btn btn-danger">削除する</button>
 </form>
 </div>
+  @endif
     <div class="border p-4">
         <!-- 件名 -->
         <h1 class="h4 mb-4">
