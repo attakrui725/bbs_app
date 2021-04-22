@@ -64,7 +64,7 @@
             @endforelse
         </section>
     </div>
-
+@if(Auth::check())
 <form class="mb-4" method="POST" action="{{ route('comment.store') }}">
     @csrf
 
@@ -117,7 +117,7 @@
 	    </button>
     </div>
 </form>
-
+@endif
 @if (session('commentstatus'))
     <div class="alert alert-success mt-4 mb-4">
     	{{ session('commentstatus') }}
