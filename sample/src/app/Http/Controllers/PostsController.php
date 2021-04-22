@@ -63,4 +63,15 @@ class PostsController extends Controller
 
       return redirect('/bbs')->with('poststatus', '投稿を編集しました');
     }
+
+
+    public function destroy($id)
+    {
+      $post = Post::findOrFail($id);
+
+      $post->comments()->delete();
+      $post->delete();
+
+      return redirect('/bbs')->with('poststatus', '投稿を削除しました');
+    }
 }
