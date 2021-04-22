@@ -8,6 +8,11 @@ use App\Http\Requests\PostRequest;
 
 class PostsController extends Controller
 {
+  public function __construct()
+    {
+        $this->middleware('auth')->except(['index','show']);
+    }
+
     public function index()
     {
       $posts = Post::orderBy('created_at', 'desc')->paginate(10);
