@@ -34,7 +34,7 @@
         </tr>
         </thead>
         <tbody id="tbl">
- @foreach ($posts as $post)
+@foreach ($posts as $post)
             <tr>
                 <td>{{ $post->id }}</td>
                 <td>{{ optional($post->category)->name }}</td>
@@ -49,7 +49,7 @@
                 <td class="text-nowrap">
 
 <p><a href="{{ action('PostsController@show', $post->id) }}" class="btn btn-primary btn-sm">詳細</a></p>
-@if (!Auth::guest() && Auth::user()->id == $post->user_id || Auth::user()->role == 1 )
+@can('admin')
 <p><a href="{{ action('PostsController@edit', $post->id) }}" class="btn btn-info btn-sm">編集</a></p>
                     <p>
     <form method="POST" action="{{ action('PostsController@destroy', $post->id) }}">
@@ -58,7 +58,7 @@
                     <button class="btn btn-danger btn-sm">削除</button>
                     </form>
                     </p>
-          @endif
+          @endcan
                 </td>
             </tr>
         @endforeach
