@@ -53,18 +53,15 @@ class PostsController extends Controller
     {
 
         $post = Post::findOrFail($post_id);
-      //   if(!(\Auth::user()->can('admin') || \Auth::user()->id == $post->user_id)) {
-      //   abort(403);
-      // }
+        PostService::check_permission();
+
         return view('bbs.edit', ['post' => $post]);
 
     }
 
     public function update(PostRequest $request, Post $post)
     {
-      if(!(\Auth::user()->can('admin') || \Auth::user()->id == $post->user_id)) {
-        abort(403);
-      }
+      PostService::check_permission();
 
       $savedata = [
         'name' => $request->name,
@@ -83,9 +80,7 @@ class PostsController extends Controller
     public function destroy($id)
     {
       $post = Post::findOrFail($id);
-      if(!(\Auth::user()->can('admin') || \Auth::user()->id == $post->user_id)) {
-        abort(403);
-      }
+        PostService::check_permission();
       $post->comments()->delete();
       $post->delete();
 
