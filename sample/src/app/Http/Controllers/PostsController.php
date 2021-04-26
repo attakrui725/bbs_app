@@ -10,7 +10,7 @@ class PostsController extends Controller
 {
   public function __construct()
     {
-        $this->middleware('auth:admin')->except(['index','show']);
+        $this->middleware('auth')->except(['index','show']);
     }
 
 
@@ -51,12 +51,21 @@ class PostsController extends Controller
 
     public function edit($post_id)
     {
+
         $post = Post::findOrFail($post_id);
+      //   if(!(\Auth::user()->can('admin') || \Auth::user()->id == $post->user_id)) {
+      //   abort(403);
+      // }
         return view('bbs.edit', ['post' => $post]);
+
     }
 
-    public function update(PostRequest $request)
+    public function update(PostRequest $request, Post $post)
     {
+      if(!(\Auth::user()->can('admin') || \Auth::user()->id == $post->user_id)) {
+        abort(403);
+      }
+
       $savedata = [
         'name' => $request->name,
         'subject' => $request->subject,
@@ -74,7 +83,9 @@ class PostsController extends Controller
     public function destroy($id)
     {
       $post = Post::findOrFail($id);
-
+      if(!(\Auth::user()->can('admin') || \Auth::user()->id == $post->user_id)) {
+        abort(403);
+      }
       $post->comments()->delete();
       $post->delete();
 
