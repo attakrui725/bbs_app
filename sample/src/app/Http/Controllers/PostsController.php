@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Post;
 use App\Http\Requests\PostRequest;
+use Illuminate\Support\Facades\Auth;
 
 class PostsController extends Controller
 {
@@ -40,6 +41,7 @@ class PostsController extends Controller
       'name' => $request->name,
       'subject' => $request->subject,
       'message' => $request->message,
+      'user_id' => Auth::id(),
 
     ];
 
@@ -66,6 +68,8 @@ class PostsController extends Controller
       'name' => $request->name,
       'subject' => $request->subject,
       'message' => $request->message,
+      'user_id' =>  Auth::user()->id,
+
     ];
 
     $post = new Post;

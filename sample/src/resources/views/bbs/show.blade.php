@@ -11,7 +11,7 @@
 
 @section('content')
 <div class="container mt-4">
-  @can('admin')
+  @if (!Auth::guest() && Auth::user()->id == $post->user_id || auth::user()->role == 1 )
   <div class="mb-4 text-right">
     <a href="{{ action('PostsController@edit', $post->id) }}" class="btn btn-info">
       編集する
@@ -22,7 +22,7 @@
       <button class="btn btn-danger">削除する</button>
     </form>
   </div>
-  @endcan
+  @endif
   <div class="border p-4">
     <!-- 件名 -->
     <h1 class="h4 mb-4">
