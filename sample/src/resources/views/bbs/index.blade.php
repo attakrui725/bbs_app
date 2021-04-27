@@ -25,7 +25,7 @@
     <thead>
       <tr>
         <th>ID</th>
-        <th>カテゴリ</th>
+
         <th>作成日時</th>
         <th>名前</th>
         <th>件名</th>
@@ -37,7 +37,6 @@
       @foreach ($posts as $post)
       <tr>
         <td>{{ $post->id }}</td>
-        <td>{{ optional($post->category)->name }}</td>
         <td>{{ $post->created_at->format('Y.m.d') }}</td>
         <td>{{ $post->name }}</td>
         <td>{{ $post->subject }}</td>
@@ -49,7 +48,7 @@
         <td class="text-nowrap">
 
           <p><a href="{{ action('PostsController@show', $post->id) }}" class="btn btn-primary btn-sm">詳細</a></p>
-          @if (!Auth::guest() && Auth::user()->id == $post->user_id || auth::user()->role == 1 )
+          @if (!Auth::guest() && Auth::user()->id == $post->user_id || !Auth::guest() && auth::user()->role == 1 )
           <p><a href="{{ action('PostsController@edit', $post->id) }}" class="btn btn-info btn-sm">編集</a></p>
           <p>
           <form method="POST" action="{{ action('PostsController@destroy', $post->id) }}">

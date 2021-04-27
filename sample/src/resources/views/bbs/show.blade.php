@@ -11,7 +11,7 @@
 
 @section('content')
 <div class="container mt-4">
-  @if (!Auth::guest() && Auth::user()->id == $post->user_id || auth::user()->role == 1 )
+  @if (!Auth::guest() && Auth::user()->id == $post->user_id || !Auth::guest() && auth::user()->role == 1 )
   <div class="mb-4 text-right">
     <a href="{{ action('PostsController@edit', $post->id) }}" class="btn btn-info">
       編集する
