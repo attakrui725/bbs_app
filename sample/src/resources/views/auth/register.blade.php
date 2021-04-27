@@ -1,5 +1,13 @@
-@extends('layouts.app')
+@extends('layouts.bbslayout')
 
+@section('title', 'LaravelPjt BBS 投稿の一覧ページ')
+@section('keywords', 'キーワード1,キーワード2,キーワード3')
+@section('description', '投稿一覧ページの説明文')
+@section('pageCss')
+<link href="/css/bbs/style.css" rel="stylesheet">
+@endsection
+
+@include('layouts.bbsheader')
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
@@ -38,6 +46,21 @@
                                 @enderror
                             </div>
                         </div>
+
+                        <div class="form-group row" style="display:none;">
+                            <label for="role" class="col-md-4 col-form-label text-md-right">{{ __('Role') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="role" type="text" class="form-control @error('role') is-invalid @enderror" name="role" value="{{ old('role','0') }}" required autocomplete="role" >
+
+                                @error('role')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
 
                         <div class="form-group row">
                             <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>

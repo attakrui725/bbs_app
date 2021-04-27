@@ -7,6 +7,11 @@ use App\Http\Requests\CommentRequest;
 use App\Comment;
 class CommentsController extends Controller
 {
+    public function __construct()
+    {
+        $this->middleware('auth')->only(['store']);
+    }
+
     public function store(CommentRequest $request)
     {
       $savedata = [

@@ -8,6 +8,12 @@ use App\Http\Requests\PostRequest;
 
 class PostsController extends Controller
 {
+  public function __construct()
+    {
+        $this->middleware('auth')->except(['index','show']);
+    }
+
+
     public function index()
     {
       $posts = Post::orderBy('created_at', 'desc')->paginate(10);
@@ -45,12 +51,18 @@ class PostsController extends Controller
 
     public function edit($post_id)
     {
+
         $post = Post::findOrFail($post_id);
+        PostService::check_permission();
+
         return view('bbs.edit', ['post' => $post]);
+
     }
 
-    public function update(PostRequest $request)
+    public function update(PostRequest $request, Post $post)
     {
+      PostService::check_permission();
+
       $savedata = [
         'name' => $request->name,
         'subject' => $request->subject,
@@ -68,7 +80,7 @@ class PostsController extends Controller
     public function destroy($id)
     {
       $post = Post::findOrFail($id);
-
+        PostService::check_permission();
       $post->comments()->delete();
       $post->delete();
 
