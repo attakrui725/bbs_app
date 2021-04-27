@@ -25,7 +25,6 @@
         <thead>
         <tr>
             <th>ID</th>
-            <th>カテゴリ</th>
             <th>作成日時</th>
             <th>名前</th>
             <th>件名</th>
@@ -37,7 +36,6 @@
 @foreach ($posts as $post)
             <tr>
                 <td>{{ $post->id }}</td>
-                <td>{{ optional($post->category)->name }}</td>
                 <td>{{ $post->created_at->format('Y.m.d') }}</td>
                 <td>{{ $post->name }}</td>
                 <td>{{ $post->subject }}</td>
