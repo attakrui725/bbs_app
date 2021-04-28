@@ -6,9 +6,16 @@
 cd sample
 docker-compose up -d
 docker-compose exec php-fpm bash
+php artisan db:seed
 ```
 
+## 管理者
+email:admin@example.com
+password:1111aaaa
 
+## ユーザー
+email:user@example.com
+password:2222bbbb
 
 
 # README
