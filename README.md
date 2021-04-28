@@ -1,3 +1,16 @@
+# Usage
+このアプリの使い方
+
+```bash
+ git clone https://github.com/attakrui725/bbs_app.git
+cd sample
+docker-compose up -d
+docker-compose exec php-fpm bash
+```
+
+
+
+
 # README
 # users
 | Column   | Type   | Options     |
