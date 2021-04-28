@@ -6,7 +6,9 @@
 cd sample
 docker-compose up -d
 docker-compose exec php-fpm bash
+composer install
 php artisan db:seed
+
 ```
 
 ## 管理者
