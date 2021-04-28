@@ -1,15 +1,20 @@
-# Usage
-このアプリの使い方
 
-```bash
- git clone https://github.com/attakrui725/bbs_app.git
+# README
+
+# Usage
+このアプリの起動までの手順を記述します
+```手順
+git clone https://github.com/attakrui725/bbs_app.git
 cd sample
 docker-compose up -d
 docker-compose exec php-fpm bash
 composer install
+.env.exampleファイル名を.envに変更
+php artisan migrate
 php artisan db:seed
-
 ```
+
+
 
 ## 管理者
 email:admin@example.com
@@ -20,8 +25,9 @@ email:user@example.com
 password:2222bbbb
 
 
-# README
-# users
+# テーブル定義書
+
+## users
 | Column   | Type   | Options     |
 | -------- | ------ | ----------- |
 | name     | string | null: false |
@@ -33,7 +39,7 @@ password:2222bbbb
 - has_many :posts
 
 
-# posts
+## posts
 
 | Column  | Type       | Options                       |
 | ------- | ---------- | ----------------------------- |
@@ -47,7 +53,7 @@ password:2222bbbb
 - belongs_to :user
 
 
-# commemts
+## comments
 
 | Column  | Type       | Options                       |
 | ------- | ---------- | ----------------------------- |
