@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Post;
 use App\Http\Requests\PostRequest;
 use Illuminate\Support\Facades\Auth;
-use PostService;
+
 
 class PostsController extends Controller
 {
